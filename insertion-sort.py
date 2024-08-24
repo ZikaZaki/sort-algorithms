@@ -22,14 +22,12 @@ def insertion_sort(arr):
 def reversed_insertion_sort(arr):
     for i in range(len(arr) - 1, 0, -1):
         j = i
-        while j < len(arr):
-            if (arr[j-1] > arr[j]):
-                print(f"Compared: ({arr[j-1]}, {arr[j]})")
-                swap(arr, j-1, j)
-                print(f"Swapped: {arr}")
-            else:
-                break
+        while j < len(arr) and arr[j-1] > arr[j]:
+            print(f"Compared: ({arr[j-1]}, {arr[j]})")
+            swap(arr, j-1, j)
+            print(f"Swapped: {arr}")
             j += 1
+
     # Print final sorted array
     print(f"Final Sorted: {arr}")
     return arr
