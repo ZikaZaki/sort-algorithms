@@ -8,9 +8,7 @@ def insertion_sort(arr):
     for i in range(1, len(arr)):
         j = i
         while j > 0 and arr[j-1] > arr[j]:
-            print(f"Compared: ({arr[j-1]}, {arr[j]})")
             swap(arr, j-1, j)
-            print(f"Swapped: {arr}")
             # decrement j to compare (j-1) with previous values till (0)
             j -= 1
 
