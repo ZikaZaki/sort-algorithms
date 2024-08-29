@@ -11,9 +11,7 @@ def insertion_sort(arr):
             swap(arr, j-1, j)
             # decrement j to compare (j-1) with previous values till (0)
             j -= 1
-
-    # print final sorted array
-    print(f"Final Sorted: {arr}")
+            
     return arr
 
 # reversed_insertion_sort: from end-to-start of array
