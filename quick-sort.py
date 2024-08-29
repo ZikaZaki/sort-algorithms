@@ -12,7 +12,8 @@ def partition(arr, low, high):
 
 
 def quick_sort(array, low=0, high=None):
-  high = high or (len(array) - 1)
+  if high is None:
+    high = len(array) - 1
   
   if (low < high):
     pivot_index = partition(array, low, high)
