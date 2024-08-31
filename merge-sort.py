@@ -1,24 +1,44 @@
-def merge_sort(array, low=None, high=None):
-    if low is None or high is None:
-        low, high = 0, len(array) - 1
+# merge-sort iteratively
+# =================================================================================
 
-    if (low < high):
-        mid = (low + high) // 2
-        if (high - low) == 1:
-            if array[low] > array[high]:
-                array[low], array[high] = array[high], array[low]
+# merge-sort recursively
+def merge_sort(array):
+    if len(array) > 1:
+        mid = len(array) // 2
+        left_half = array[:mid]
+        right_half = array[mid:]
+        
+        merge_sort(left_half) # recursive call with the left side
+        merge_sort(right_half) # recursive call with the right side
 
+        # k: point to original (array), i: to (left_half), j: to (right_half)
+        k = i = j = 0
+
+        # compare sorted left and right and then insert/replace into original array
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                array[k] = left_half[i]
+                i += 1
+            else:
+                array[k] = right_half[j]
+                j += 1
+            # increment (k) pointer after every insert/replace from (left or right)
+            k += 1
+
+
+        # handle remainings in the left_half
+        while i < len(left_half):
+            array[k] = left_half[i]
+            i += 1
+            k += 1
+
+        # handle remainings in the right_half
+        while j < len(right_half):
+            array[k] = right_half[j]
+            j += 1
+            k += 1
+
+arr = [0, 5, 7, 6, 8, 3, 2, 1]
+merge_sort(arr)
+print("Sorted Array: ", arr)
         
-        merge_sort(array, low, mid)
-        merge_sort(array, mid + 1, high)
-        
-        for i in range(low, mid+1):
-            if (array[i] > array[mid+1]):
-                array[i], array[mid+1] = array[mid+1], array[i]
-    
-    return array
-        
-    
-        
-arr = [2,1,0,5,7,6,8,3]
-print(merge_sort(arr))
