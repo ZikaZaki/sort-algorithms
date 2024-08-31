@@ -1,18 +1,19 @@
-# Swap helper method to swap array elements
-def swap(arr, i, j):
-    arr[i], arr[j] = arr[j], arr[i]
-    return arr
-
-# insertion_sort: from start-to-end of array
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
+# implementation of insertion_sort algorithm
+def insertion_sort(array):
+    for i in range(1, len(array)):
+        key = array[i]
         j = i
-        while j > 0 and arr[j-1] > arr[j]:
-            swap(arr, j-1, j)
-            # decrement j to compare (j-1) with previous values till (0)
+        
+        while j > 0 and array[j-1] > key:
+            array[j] = array[j-1]
             j -= 1
-            
-    return arr
+
+        # place the (key) in its correct position
+        array[j] = key
+
+    # return final sorted array
+    return array
+    
 
 # reversed_insertion_sort: from end-to-start of array
 def reversed_insertion_sort(arr):
