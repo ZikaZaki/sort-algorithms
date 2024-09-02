@@ -49,8 +49,8 @@
     <tr>
       <td>Quick Sort</td>
       <td >No <br>(can be stable)</td>
-      <td><strong>O(n log n)</strong></td>
-      <td><strong>O(n log n)</strong></td>
+      <td><strong>O(n&nbsp;log&nbsp;n)</strong></td>
+      <td><strong>O(n&nbsp;log&nbsp;n)</strong></td>
       <td><strong>O(n<sup>2</sup>)</strong><br>(when pivot selection is poor)</td>
       <td><p>Quick Sort is generally the fastest and most efficient for large datasets when memory usage is a concern, especially with large, unsorted arrays where stability is not a requirement.</p></td>
     </tr>
