@@ -71,6 +71,14 @@
       <td><p>Good for memory-constrained environments; not stable but performs well on large datasets.</p></td>
     </tr>
     <tr>
+      <td>Shell Sort</td>
+      <td>No</td>
+      <td><strong>O(n log n)</strong></td>
+      <td><strong>O(n<sup>3/2</sup>)</strong></td>
+      <td><strong>O(n<sup>2</sup>)</strong></td>
+      <td><p>Good for medium-sized arrays; improves on Insertion Sort by comparing elements far apart.</p></td>
+    </tr>
+    <tr>
       <td>Counting&nbsp;Sort</td>
       <td>Yes</td>
       <td><strong>O(n + k)</strong></td>
@@ -85,14 +93,6 @@
       <td><strong>O(nk)</strong></td>
       <td><strong>O(nk)</strong></td>
       <td><p>Best for sorting large sets of integers; works well when the range of input values is known.</p></td>
-    </tr>
-    <tr>
-      <td>Shell Sort</td>
-      <td>No</td>
-      <td><strong>O(n log n)</strong></td>
-      <td><strong>O(n<sup>3/2</sup>)</strong></td>
-      <td><strong>O(n<sup>2</sup>)</strong></td>
-      <td><p>Good for medium-sized arrays; improves on Insertion Sort by comparing elements far apart.</p></td>
     </tr>
     <tr>
       <td>Bucket Sort</td>
