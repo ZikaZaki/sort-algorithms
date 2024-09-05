@@ -38,13 +38,15 @@ class MinHeap:
         self._siftup(len(self.heap) - 1)
         
     def update_by_index(self, i, new):
-        if i < len(self.heap):
-            old = self.heap[i]
-            self.heap[i] = new
-            if new < old:
-                self._siftup(i)
-            else:
-                self._siftdown(i)
+        if i < 0 or i >= len(self.heap):
+            raise IndexError(f"{i} index out of bounds!")
+        # get old value to check whether to siftup or siftdown
+        old = self.heap[i]
+        self.heap[i] = new
+        if new < old:
+            self._siftup(i)
+        else:
+            self._siftdown(i)
     
     def update(self, old, new):
         if old in self.heap:
