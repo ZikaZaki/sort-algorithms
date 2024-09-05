@@ -1,57 +1,33 @@
-class MinHeap:
-    def __init__(self, arr=None):
-        self.heap = []
-        if type(arr) is list:
-            self.heap = arr.copy()
-            for i in range(len(self.heap))[::-1]: # reverses the indices
-                self._siftdown(i)
-    
-    def _siftup(self, i):
-        parent = (i - 1) // 2
-        while i != 0 and self.heap[i] < self.heap[parent]:
-            self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
-            i = parent
-            parent = (i - 1) // 2
-    
-    def _siftdown(self, i):
+def heapify(array, n, i):
+    while True:
         left = 2 * i + 1
         right = 2 * i + 2
-        while (left < len(self.heap) and self.heap[i] > self.heap[left]) or (right < len(self.heap) and self.heap[i] > self.heap[right]):
-            smallest = left if (right >= len(self.heap) or self.heap[left] < self.heap[right]) else right
-            self.heap[i], self.heap[smallest] = self.heap[smallest], self.heap[i]
-            i = smallest
-            left = 2 * i + 1
-            right = 2 * i + 2
-            
-    def insert(self, element):
-        self.heap.append(element)
-        self._siftup(len(self.heap) - 1)
-    
-    def get_min(self):
-        return self.heap[0] if len(self.heap) > 0 else None
         
-    def extract_min(self):
-        if len(self.heap) == 0:
-            return None
-        min_value = self.heap[0]
-        self.heap[0], self.heap[-1] = self.heap[-1], self.heap[0]
-        self.heap.pop()
-        self._siftdown(0)
-        return min_value
-        
-    def update_by_index(self, i, new):
-        old = self.heap[i]
-        self.heap[i] = new
-        if new < old:
-            self._siftup(i)
-        else:
-            self._siftdown(i)
-            
-    def update(self, old, new):
-        if old in self.heap:
-            self.update_by_index(self.heap.index(old), new)
-    
+        if left >= n:
+            break
+
+        largest = left
+
+        if right < n and array[right] > array[left]:
+            largest = right
+
+        if array[i] >= array[largest]:
+            break
+
+        array[i], array[largest] = array[largest], array[i]
+        i = largest
 
 
-            
-                
+def heapsort(array):
+    n = len(array)
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(array, n, i)
+
+    for i in range(n - 1, 0, -1):
+        array[i], array[0] = array[0], array[i]
+        heapify(array, i, 0)
+
+arr = [3,1,4,1,5,9,2,6,5,3,5]    
+heapsort(arr)
+print("MinHeap after sort: ", arr)   
