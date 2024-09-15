@@ -6,7 +6,7 @@ function partition(arr, low, high){
     for(let j = low; j < high; j++){
         if(arr[j] <= pivot){
             i += 1;
-            if (i === j) continue; // to skip unnecessary swaps
+            // to skip unnecessary swaps use: if (i === j) continue; 
             [arr[i], arr[j]] = [arr[j], arr[i]]
         }
     }
