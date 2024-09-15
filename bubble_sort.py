@@ -10,6 +10,9 @@ def bubble_sort(array):
     if(not has_swaps):
       break
 
+  # return final sorted array
+  return array
+
 arr = [9,53,5,0,2,3,1,4,9]
 bubble_sort(arr)
 print(arr)
