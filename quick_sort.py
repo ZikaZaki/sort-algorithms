@@ -2,17 +2,17 @@
 # Pivot from end
 def partition(arr, start, end):
     pivot = arr[end]
-    i = end
+    i = low - 1
     
     for j in range(end-1, start-1, -1):
-        if arr[j] >= pivot:
-            i -= 1
+        if arr[j] <= pivot:
+            i += 1
             arr[i], arr[j] = arr[j], arr[i]
             
     
-    arr[i], arr[end] = arr[end], arr[i]
+    arr[i+1], arr[end] = arr[end], arr[i+1]
     
-    return i
+    return i+1
 
 # Pivot from start
 def partition(arr, start, end):
