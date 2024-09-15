@@ -35,5 +35,19 @@ function quickSort(arr){
     return arr;
 }
 
+// Recursive implementation
+function quickSort(arr, low, high){
+    if(low < high) {
+        const pivotIndex = partition(arr, low, high);
+        
+        // left side
+        quickSort(arr, low, pivotIndex - 1);
+        // right side
+        quickSort(arr, pivotIndex + 1, high);
+    }
+    
+    return arr;
+}
+
 const arr = [53,9,5,9,2,3,1,4,0];
 console.log("sorted: ", quickSort(arr));
