@@ -38,6 +38,8 @@ def merge_sort(array):
             j += 1
             k += 1
 
+    return array
+
 arr = [0, 5, 7, 6, 8, 3, 2, 1]
 merge_sort(arr)
 print("Sorted Array: ", arr)
