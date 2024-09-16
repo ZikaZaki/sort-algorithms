@@ -10,7 +10,7 @@ function mergeSort(arr) {
         // right side
         mergeSort(rightArr);
         
-        let k = i = j = 0;
+        let k = 0, i = 0, j = 0;
         
         while(i < leftArr.length && j < rightArr.length){
             if (leftArr[i] < rightArr[j]){
