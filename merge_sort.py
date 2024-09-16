@@ -1,7 +1,47 @@
-# merge-sort iteratively
+# Iterative implementation of the merge-sort algorithm
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    # Merge the two lists together
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    # Add the remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+def merge_sort_iterative(arr):
+    width = 1
+    n = len(arr)
+    
+    # Iterate through the list, doubling the width of subarrays to merge each time
+    while width < n:
+        for i in range(0, n, 2 * width):
+            left = arr[i:i + width]
+            right = arr[i + width:i + 2 * width]
+            arr[i:i + 2 * width] = merge(left, right)
+        
+        # Double the subarray width
+        width *= 2
+
+    return arr
+
+# Example usage
+arr = [38, 27, 43, 3, 9, 82, 10]
+sorted_arr = merge_sort_iterative(arr)
+print("Sorted array:", sorted_arr)
+
 # =================================================================================
 
-# merge-sort recursively
+# Recursive implementation of the merge-sort algorithm
 def merge_sort(array):
     if len(array) > 1:
         mid = len(array) // 2
