@@ -1,13 +1,59 @@
-function mergeSort(arr) {
+// Iterative implementation of the Merge Sort algorithm
+function merge(left, right) {
+    let result = [];
+    let i = 0, j = 0;
+
+    // Merge the two lists together
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+            result.push(left[i]);
+            i++;
+        } else {
+            result.push(right[j]);
+            j++;
+        }
+    }
+
+    // Add remaining elements
+    result = result.concat(left.slice(i)).concat(right.slice(j));
     
+    return result;
+}
+
+function mergeSortIterative(arr) {
+    let width = 1;
+    let n = arr.length;
+
+    // Iterate through the list, doubling the width of subarrays to merge each time
+    while (width < n) {
+        for (let i = 0; i < n; i += 2 * width) {
+            let left = arr.slice(i, i + width);
+            let right = arr.slice(i + width, i + 2 * width);
+            arr.splice(i, 2 * width, ...merge(left, right));
+        }
+        // Double the subarray width
+        width *= 2;
+    }
+
+    return arr;
+}
+
+// Example usage
+let arr = [38, 27, 43, 3, 9, 82, 10];
+let sortedArr = mergeSortIterative(arr);
+console.log("Sorted array:", sortedArr);
+// ================================================================================================
+
+// Recursive implementation of the Merge Sort algorithm
+function mergeSort(arr) {
     if (arr.length > 1){
         const midIndex = Math.floor(arr.length / 2);
         const leftArr = arr.slice(0, midIndex);
         const rightArr = arr.slice(midIndex, arr.length);
         
-        // left side
+        // recursive call with left side
         mergeSort(leftArr);
-        // right side
+        // recursive call with right side
         mergeSort(rightArr);
         
         let k = 0, i = 0, j = 0;
@@ -36,60 +82,6 @@ function mergeSort(arr) {
         }
     }
     
-    return arr;
-}
-
-function merge(arr, temp, left, mid, right) {
-    let i = left;     // Starting index of left subarray
-    let j = mid + 1;  // Starting index of right subarray
-    let k = left;     // Starting index to be sorted in temp array
-
-    // Merge the two subarrays into temp
-    while (i <= mid && j <= right) {
-        if (arr[i] <= arr[j]) {
-            temp[k] = arr[i];
-            i++;
-        } else {
-            temp[k] = arr[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copy remaining elements of the left subarray, if any
-    while (i <= mid) {
-        temp[k] = arr[i];
-        i++;
-        k++;
-    }
-
-    // Copy remaining elements of the right subarray, if any
-    while (j <= right) {
-        temp[k] = arr[j];
-        j++;
-        k++;
-    }
-
-    // Copy sorted subarray back into the original array
-    for (i = left; i <= right; i++) {
-        arr[i] = temp[i];
-    }
-}
-
-function mergeSortIterative(arr) {
-    let n = arr.length;
-    let temp = new Array(n);  // Temporary array for merging
-
-    // size is the size of subarrays to be merged (1, 2, 4, 8, ...)
-    for (let size = 1; size < n; size *= 2) {
-        // left is the starting point of the subarrays to be merged
-        for (let left = 0; left < n - size; left += 2 * size) {
-            let mid = left + size - 1;
-            let right = Math.min(left + 2 * size - 1, n - 1);
-            merge(arr, temp, left, mid, right);
-        }
-    }
-
     return arr;
 }
 
