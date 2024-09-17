@@ -66,13 +66,13 @@ def merge_sort(array):
             k += 1
 
 
-        # handle remainings in the left_half
+        # handle remaining elements in the left_half
         while i < len(left_half):
             array[k] = left_half[i]
             i += 1
             k += 1
 
-        # handle remainings in the right_half
+        # handle remaining elements in the right_half
         while j < len(right_half):
             array[k] = right_half[j]
             j += 1
