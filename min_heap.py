@@ -20,7 +20,8 @@ class MinHeap:
                 self._siftdown(i)
     
     def _siftup(self, i):
-        if len(self.heap) > 1 and i < len(self.heap):
+        n = len(self.heap)
+        if n > 1 and i < n:
             parent = self._parent(i)
             while i != 0 and self.heap[i] < self.heap[parent]:
                 self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
@@ -74,9 +75,11 @@ class MinHeap:
     def update_by_index(self, i, new):
         if i < 0 or i >= len(self.heap):
             raise IndexError(f"{i} index out of bounds!")
+            
         # get old value to check whether to siftup or siftdown
         old = self.heap[i]
         self.heap[i] = new
+        
         if new < old:
             self._siftup(i)
         else:
@@ -98,11 +101,13 @@ class MinHeap:
         self.heap[0], self.heap[n] = self.heap[n], self.heap[0]
         min_val = self.heap.pop()
         self._siftdown(0)
+        
         return min_val
         
     def get_min(self):
         if len(self.heap) == 0:
             return None
+            
         return self.heap[0]
 
 
