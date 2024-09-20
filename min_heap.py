@@ -4,7 +4,16 @@ class MinHeap:
         if isinstance(array, list):
             self.heap = array.copy()
             self._build()
-    
+
+    def _parent(self, i):
+        return (i - 1) // 2
+
+    def _left(self, i):
+        return (2 * i) + 1
+
+    def _right(self, i):
+        return (2 * i) + 2
+        
     def _build(self):
         if len(self.heap) > 1:
             for i in range(len(self.heap) // 2 - 1, -1, -1):
@@ -12,11 +21,11 @@ class MinHeap:
     
     def _siftup(self, i):
         if len(self.heap) > 1 and i < len(self.heap):
-            parent = (i - 1) // 2
+            parent = self._parent(i)
             while i != 0 and self.heap[i] < self.heap[parent]:
                 self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
                 i = parent
-                parent = (i - 1) // 2
+                parent = self._parent(i)
 
     # More efficient
     def _siftdown(self, i):
@@ -38,9 +47,9 @@ class MinHeap:
     def _siftdown(self, i):
         n = len(self.heap) # size of array (heap)
         while True:
-            smallest = i  # initialize smallest with i
-            left = (2 * i) + 1
-            right = (2 * i) + 2
+            smallest = i
+            left = self._left(i)
+            right = self._right(i)
 
             if left < n and self.heap[left] < self.heap[smallest]:
                 smallest = left
