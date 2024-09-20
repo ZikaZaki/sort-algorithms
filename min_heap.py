@@ -30,16 +30,20 @@ class MinHeap:
     # More efficient
     def _siftdown(self, i):
         while True:
-            left = 2 * i + 1
-            right = 2 * i + 2
+            left = self._left(i)
+            right = self._right(i)
+            
             if left >= len(self.heap):
                 break
-
+                
             smallest = left
+            
             if right < len(self.heap) and self.heap[right] < self.heap[left]:
                 smallest = right
+                
             if self.heap[i] <= self.heap[smallest]:
                 break
+                
             self.heap[i], self.heap[smallest] = self.heap[smallest], self.heap[i]
             i = smallest
 
