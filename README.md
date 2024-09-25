@@ -6,7 +6,7 @@
 - [x] Merge Sort
 - [x] Quick Sort
 - [x] Heap Sort
-- [ ] Bucket Sort
+- [x] Bucket Sort
 - [ ] Counting Sort
 - [ ] Radix Sort
 
