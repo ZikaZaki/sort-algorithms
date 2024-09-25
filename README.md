@@ -1,14 +1,14 @@
 # Sorting Algorithms
+- [x] Selection Sort
 - [x] Bubble Sort
 - [x] Insertion Sort
-- [ ] Selection Sort
-- [x] Merge Sort
 - [ ] Shell Sort
-- [ ] Heap Sort
+- [x] Merge Sort
+- [x] Quick Sort
+- [x] Heap Sort
 - [ ] Bucket Sort
 - [ ] Counting Sort
 - [ ] Radix Sort
-- [x] Quick Sort
 
 <table style="width: 100%;">
   <thead>
