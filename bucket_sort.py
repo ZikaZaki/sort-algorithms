@@ -9,13 +9,18 @@ def bucket_sort(arr, num_buckets=10):
   min_value = min(arr)
   max_value = max(arr)
   range_value = max_value - min_value
+  
+  # Avoid division by zero when all elements are the same
+  if range_value == 0:
+      return sorted(arr)
 
   # Step 3: Calculate the bucket index for each element based on element value and previous factors 
   for elem in arr:
     # Normalizing the value to fit the bucket range
-    index = int((elem - min_value) / (range_value + 1) * (num_buckets - 1))
+    index = int((elem - min_value) / range_value * (num_buckets - 1))
     buckets[index].append(elem)
     
+  print("Buckets: ", buckets)
   # Step 3: Sort each bucket and concatenate the results.
   arr = [item for bucket in buckets for item in sorted(bucket)]
 
@@ -23,5 +28,3 @@ def bucket_sort(arr, num_buckets=10):
 
 arr = [6, 56, 1, 32, 0, 9, 2, 23, 0]
 print("Sorted array:", bucket_sort(arr))
-
-  
