@@ -20,7 +20,6 @@ def bucket_sort(arr, num_buckets=10):
     index = int((elem - min_value) / range_value * (num_buckets - 1))
     buckets[index].append(elem)
     
-  print("Buckets: ", buckets)
   # Step 3: Sort each bucket and concatenate the results.
   arr = [item for bucket in buckets for item in sorted(bucket)]
 
