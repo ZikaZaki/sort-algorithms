@@ -1,4 +1,7 @@
 def shell_sort(arr):
+  if not arr:
+    return arr
+    
   n = len(arr)
   gap = n // 2
   
