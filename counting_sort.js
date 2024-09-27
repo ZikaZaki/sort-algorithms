@@ -8,7 +8,6 @@ function countingSort(arr){
     
     const range = max - min + 1;
     const count = Array.from({ length: range }, () => 0);
-    console.log("count:", count);
     
     arr.forEach(element => count[element - min] += 1);
     
