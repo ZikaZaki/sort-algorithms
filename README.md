@@ -8,7 +8,7 @@
 - [x] Heap Sort
 - [x] Bucket Sort
 - [ ] Tim Sort
-- [ ] Counting Sort
+- [x] Counting Sort
 - [ ] Radix Sort
 
 <table style="width: 100%;">
