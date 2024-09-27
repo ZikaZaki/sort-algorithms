@@ -18,6 +18,7 @@ def bucket_sort(arr, num_buckets=10):
   for elem in arr:
     # Normalizing the value to fit the bucket range
     index = int((elem - min_value) / range_value * (num_buckets - 1))
+    index = min(index, num_buckets - 1)  # Prevent index out of range
     buckets[index].append(elem)
     
   # Step 3: Sort each bucket and concatenate the results.
