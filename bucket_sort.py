@@ -12,7 +12,7 @@ def bucket_sort(arr, num_buckets=10):
   
   # Avoid division by zero when all elements are the same
   if range_value == 0:
-      return sorted(arr)
+      return arr
 
   # Step 3: Calculate the bucket index for each element based on element value and previous factors 
   for elem in arr:
