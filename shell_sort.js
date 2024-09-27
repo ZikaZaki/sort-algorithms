@@ -1,4 +1,6 @@
 function shellSort(arr){
+    if(arr.length === 0) return arr;
+    
     const n = arr.length;
     let gap = Math.floor(n / 2);
     
