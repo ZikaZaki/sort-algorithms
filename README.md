@@ -9,7 +9,7 @@
 - [x] Bucket Sort
 - [ ] Tim Sort
 - [x] Counting Sort
-- [ ] Radix Sort
+- [x] Radix Sort
 
 <table style="width: 100%;">
   <thead>
