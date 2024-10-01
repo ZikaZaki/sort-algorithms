@@ -1,3 +1,4 @@
+# ======================================Rdix Sort Using Counting Sort======================================
 def counting_sort(arr, exp):
     if not arr:
         return arr
@@ -40,8 +41,44 @@ def radix_sort(arr):
     
     return arr
 
+# Example usage    
+arr = [12,3,85,6,89,0,2,1,3,68,74,11]
+print("sorted: ", radix_sort(arr))
 
+arr = [6, 56, 1, 32, 0, 9, 2, 23, 0]
+print("Sorted array:", radix_sort(arr))
+# =======================================================================================================
+# ======================================Rdix Sort Using Bucket Sort======================================
+def bucket_sort(arr, exp):
+    num_bucket = 10
+    n = len(arr)
+    buckets = [[] for _ in range(num_bucket)]
+
+    # Place elements in respective buckets based on the current digit
+    for ele in arr:
+        index = (ele // exp) % 10
+        buckets[index].append(ele)
+        
+    # Flatten the list: concatenate the lists in each bucket
+    return [item for bucket in buckets for item in bucket]
+
+def radix_sort(arr):
+    if not arr:
+        return arr
+
+    # Find max element in arr to know how many digits we need to process
+    max_val = max(arr)
+    exp = 1 # Initialize the exponent (1 for units, 10 for tens, etc.)
     
+    # Process digits from least significant to most significant
+    while max_val // exp > 0:
+        # Perform bucket sort based on current exponent
+        arr = bucket_sort(arr, exp)
+        exp *= 10 # Move to the next significant digit
+    
+    return arr
+
+# Example usage
 arr = [12,3,85,6,89,0,2,1,3,68,74,11]
 print("sorted: ", radix_sort(arr))
 
